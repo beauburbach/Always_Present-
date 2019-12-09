@@ -1,7 +1,7 @@
 <h1>Always Present</h1>
 
 <% if logged_in? %>
-<h1> you are logged in </h1>
+<h3> you are logged in </h3>
 <a href="courses">View your courses</a>
 <%end%>
 <%= button_to "Login", '/login', method: :get%>
