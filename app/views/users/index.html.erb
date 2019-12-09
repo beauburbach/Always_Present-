@@ -1,0 +1,150 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all users
+    </h1>
+  </div>
+</div>
+  <a href="home">Return to Home Page</a>
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new user
+    </h2>
+
+    <form action="/insert_user" method="post">
+      <div class="form-group">
+        <label for="email_box">
+          Email
+        </label>
+
+        <input type="text" id="email_box" name="email_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="password_box">
+          Password
+        </label>
+
+        <input type="text" id="password_box" name="password_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="phone_number_box">
+          Phone number
+        </label>
+
+        <input type="text" id="phone_number_box" name="phone_number_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="student_id_box">
+          Student
+        </label>
+
+        <input type="text" id="student_id_box" name="student_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="password_digest_box">
+          Password digest
+        </label>
+
+        <input type="text" id="password_digest_box" name="password_digest_from_query" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create user
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Email
+        </th>
+
+        <th>
+          Password
+        </th>
+
+        <th>
+          Phone number
+        </th>
+
+        <th>
+          Student
+        </th>
+
+        <th>
+          Password digest
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= user.id %>
+        </td>
+
+        <td>
+          <%= user.email %>
+        </td>
+
+        <td>
+          <%= user.password %>
+        </td>
+
+        <td>
+          <%= user.phone_number %>
+        </td>
+
+        <td>
+          <%= user.student_id %>
+        </td>
+
+        <td>
+          <%= user.password_digest %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(user.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(user.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/users/<%= user.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

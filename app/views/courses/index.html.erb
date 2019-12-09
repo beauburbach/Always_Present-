@@ -1,0 +1,166 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all courses
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new course
+    </h2>
+
+    <form action="/insert_course" method="post">
+      <div class="form-group">
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="name_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="class_time_box">
+          Class time
+        </label>
+
+        <input type="text" id="class_time_box" name="class_time_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="description_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="user_id_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="day_of_the_week_box">
+          Day of the week
+        </label>
+
+        <input type="text" id="day_of_the_week_box" name="day_of_the_week_from_query" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="teacher_box">
+          Teacher
+        </label>
+
+        <input type="text" id="teacher_box" name="teacher_from_query" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create course
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          Class time
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Day of the week
+        </th>
+
+        <th>
+          Teacher
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @courses.each do |course| %>
+      <tr>
+        <td>
+          <%= course.id %>
+        </td>
+
+        <td>
+          <%= course.name %>
+        </td>
+
+        <td>
+          <%= course.class_time %>
+        </td>
+
+        <td>
+          <%= course.description %>
+        </td>
+
+        <td>
+          <%= course.user_id %>
+        </td>
+
+        <td>
+          <%= course.day_of_the_week %>
+        </td>
+
+        <td>
+          <%= course.teacher %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(course.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(course.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/courses/<%= course.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

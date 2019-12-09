@@ -1,0 +1,146 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Course #<%= @course.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/courses" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_course/<%= @course.id %>" class="btn btn-block btn-outline-secondary">
+          Delete course
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @course.name %>
+      </dd>
+
+      <dt>
+        Class time
+      </dt>
+      <dd>
+        <%= @course.class_time %>
+      </dd>
+
+      <dt>
+        Description
+      </dt>
+      <dd>
+        <%= @course.description %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @course.user_id %>
+      </dd>
+
+      <dt>
+        Day of the week
+      </dt>
+      <dd>
+        <%= @course.day_of_the_week %>
+      </dd>
+
+      <dt>
+        Teacher
+      </dt>
+      <dd>
+        <%= @course.teacher %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@course.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@course.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit course
+    </h2>
+
+    <form action="/modify_course/<%= @course.id %>"  method="post" >
+      <div class="form-group">
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="name_from_query" class="form-control" value="<%= @course.name %>">
+      </div>
+
+      <div class="form-group">
+        <label for="class_time_box">
+          Class time
+        </label>
+
+        <input type="text" id="class_time_box" name="class_time_from_query" class="form-control" value="<%= @course.class_time %>">
+      </div>
+
+      <div class="form-group">
+        <label for="description_box">
+          Description
+        </label>
+
+        <input type="text" id="description_box" name="description_from_query" class="form-control" value="<%= @course.description %>">
+      </div>
+
+      <div class="form-group">
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="user_id_from_query" class="form-control" value="<%= @course.user_id %>">
+      </div>
+
+      <div class="form-group">
+        <label for="day_of_the_week_box">
+          Day of the week
+        </label>
+
+        <input type="text" id="day_of_the_week_box" name="day_of_the_week_from_query" class="form-control" value="<%= @course.day_of_the_week %>">
+      </div>
+
+      <div class="form-group">
+        <label for="teacher_box">
+          Teacher
+        </label>
+
+        <input type="text" id="teacher_box" name="teacher_from_query" class="form-control" value="<%= @course.teacher %>">
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update course
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
