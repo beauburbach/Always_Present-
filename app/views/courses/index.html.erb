@@ -153,9 +153,7 @@
         </td>
 
         <td>
-          <a href="/courses/<%= course.id %>">
-            Show details
-          </a>
+          <%= link_to 'Delete', courses_path(course), :confirm => 'Are you sure?', :method => :delete %>
         </td>
       </tr>
       <% end %>

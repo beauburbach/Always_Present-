@@ -1,7 +1,8 @@
-<h1>Hi and welcome to always present</h1>
+<h1>Always Present</h1>
 
 <% if logged_in? %>
 <h1> you are logged in </h1>
+<a href="courses">View your courses</a>
 <%end%>
 <%= button_to "Login", '/login', method: :get%>
 <%= button_to "Sign up", '/users/new', method: :get%>

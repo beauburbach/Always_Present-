@@ -63,6 +63,9 @@ end
 
     @course.destroy
 
-    redirect_to("/courses", { :notice => "Course deleted successfully."} )
+    respond_to do |format|
+      format.html {redirect_to(courses_url)}
+      format.xml { head :no_content}
+    end
   end
 end
