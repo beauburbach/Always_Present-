@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all.order({ :created_at => :desc })
+    @courses = current_user.courses
 
     render({ :template => "courses/index.html.erb" })
   end
@@ -26,7 +26,7 @@ end
     @course.name = params.fetch("name_from_query")
     @course.class_time = params.fetch("class_time_from_query")
     @course.description = params.fetch("description_from_query")
-    @course.user_id = params.fetch("user_id_from_query")
+    @course.user_id = current_user.id
     @course.day_of_the_week = params.fetch("day_of_the_week_from_query")
     @course.teacher = params.fetch("teacher_from_query")
 
@@ -67,5 +67,10 @@ end
       format.html {redirect_to(courses_url)}
       format.xml { head :no_content}
     end
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to("/courses/home")
   end
 end

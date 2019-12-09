@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   get 'login', to: 'courses#new'
   post 'login', to: 'courses#find_user'
   get 'home', to: 'courses#home'
+  get 'logout', to: 'users#logout'
 
   delete '/courses.:id_from_path(.:format)' => 'courses#destroy'
+  delete '/users.:id_from_path(.:format)' => 'users#destroy'
 
 
   # Routes for the Course resource:

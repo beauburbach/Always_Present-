@@ -5,6 +5,11 @@ class UsersController < ApplicationController
     render({ :template => "users/index.html.erb" })
   end
 
+  def logout
+    session[:user_id] = nil
+    redirect_to '/home'
+  end
+
   def show
     the_id = params.fetch("id_from_path")
     @user = User.where({:id => the_id }).at(0)
@@ -17,7 +22,7 @@ class UsersController < ApplicationController
     @user.email = params.fetch("email_from_query")
     @user.password = params.fetch("password_from_query")
     @user.phone_number = params.fetch("phone_number_from_query")
-    session
+    session[:user_id] = @user.id
 
     if @user.valid?
       @user.save
