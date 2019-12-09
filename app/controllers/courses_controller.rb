@@ -12,6 +12,15 @@ class CoursesController < ApplicationController
     render({ :template => "courses/show.html.erb" })
   end
 
+   def find_user
+   @user = User.find_by(email: params.fetch("email_from_query"))
+   if @user && @user.authenticate(params.fetch("password_from_query"))
+      redirect_to '/home'
+      session[:user_id] = @user.id
+   else
+      redirect_to("/login", alert: "User Account not found")
+   end
+end
   def create
     @course = Course.new
     @course.name = params.fetch("name_from_query")

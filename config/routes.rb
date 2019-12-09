@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   root to: 'courses#home'
   get 'login', to: 'courses#new'
-  post 'login', to: 'courses#create_user'
+  post 'login', to: 'courses#find_user'
   get 'home', to: 'courses#home'
+
 
   # Routes for the Course resource:
 

@@ -17,15 +17,13 @@ class UsersController < ApplicationController
     @user.email = params.fetch("email_from_query")
     @user.password = params.fetch("password_from_query")
     @user.phone_number = params.fetch("phone_number_from_query")
-    @user.student_id = params.fetch("student_id_from_query")
-    @user.password_digest = params.fetch("password_digest_from_query")
     session
 
     if @user.valid?
       @user.save
-      redirect_to("/users", { :notice => "User created successfully." })
+      redirect_to("/home", { :notice => "User created successfully." })
     else
-      redirect_to("/users", { :notice => "User failed to create successfully." })
+      redirect_to("/home", { :notice => "User failed to create successfully." })
     end
   end
 
