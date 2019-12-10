@@ -29,7 +29,16 @@ end
     @course.user_id = current_user.id
     @course.day_of_the_week = params.fetch("day_of_the_week_from_query")
     @course.teacher = params.fetch("teacher_from_query")
+    
+    mg_api = '10ad322a96bdd8bc0c0b1b780b674640-5645b1f9-910b9907'
+    mg_domain = 'sandboxd01ac4e79a2540e29c954b0bdd8f3ffe.mailgun.org'
+    mg_client = Mailgun::Client.new(mg_api)
+    message_params = {:from => 'beauburbach2017@gmail.com',
+                      :to => current_user.email,
+                      :subject => 'Always Present Reminder',
+                      :text => 'Dont forget to go to your ' + @course.name.to_s + " class at " + params.fetch("class_time_from_query").to_s}
 
+    mg_client.send_message(mg_domain, message_params)
     if @course.valid?
       @course.save
       redirect_to("/courses", { :notice => "Course created successfully." })
