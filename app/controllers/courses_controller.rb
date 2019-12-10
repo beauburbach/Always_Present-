@@ -36,7 +36,7 @@ end
     message_params = {:from => 'beauburbach2017@gmail.com',
                       :to => current_user.email,
                       :subject => 'Always Present Reminder',
-                      :text => 'Dont forget to go to your ' + @course.name.to_s + " class at " + params.fetch("class_time_from_query").to_s}
+                      :text => 'Dont forget to go to your ' + @course.name.to_s + " class at " + params.fetch("class_time_from_query").to_s + "with Professor " + @course.teacher.to_s}
 
     mg_client.send_message(mg_domain, message_params)
     if @course.valid?
